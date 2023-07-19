@@ -3,6 +3,10 @@ package com.ttt.tdd;
 import com.ttt.exception.TicTacToeException;
 
 public class TicTacToe {
+	
+	private Character[][] board = {{'\0', '\0', '\0'},
+            						{'\0', '\0', '\0'},
+            						{'\0', '\0', '\0'}};
 	 
 	 public void play(int column, int row) {
 
