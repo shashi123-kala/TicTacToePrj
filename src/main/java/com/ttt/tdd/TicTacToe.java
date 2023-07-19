@@ -6,24 +6,28 @@ public class TicTacToe {
 
 	private Character[][] board = { { '\0', '\0', '\0' }, { '\0', '\0', '\0' }, { '\0', '\0', '\0' } };
 	private char lastPlayer = '\0';
+    private static final int SIZE = 3;
+
 
 	public String play(int column, int row) {
 		checkAxis(column, "X value is outside the board!");
-		setField(column, row,lastPlayer);
+		checkAxis(row, "Y value is outside the board!");
 		lastPlayer = playWithPlayer();
-		setField(column, row, lastPlayer);
-		return checkWin();
+		setField(column, row,lastPlayer);
+		if (isWinner()) {
+            return lastPlayer + " is the Winner";
+        }
+        return "No winner";
 	}
 
-	private String checkWin() {
-		String winner = "No winner";
-		for (int index = 0; index < 3; index++) {
-			if (board[0][index] == lastPlayer && board[1][index] == lastPlayer && board[2][index] == lastPlayer) {
-				return lastPlayer + " is the Winner";
-			}
-		}
-		return winner;
-	}
+	
+	 private boolean isWinner() {
+	        for (int i = 0; i < SIZE; i++)
+	            if (board[0][i] + board[1][i] + board[2][i] == (lastPlayer * SIZE)) {
+	                return true;
+	            }
+	        return false;
+	        }
 
 	private void checkAxis(int axis, String message) {
 		if (axis < 1 || axis > 3) {
