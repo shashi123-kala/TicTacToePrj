@@ -9,6 +9,9 @@ public class TicTacToe {
 	        if (column < 1 || column > 3) {
 	            throw new TicTacToeException("X value is outside the board!");
 	        }
+	        else if (row < 1 || row > 3) {
+	            throw new RuntimeException("Y value is outside the board!");
+	        }
 	        
 	    }
 }
